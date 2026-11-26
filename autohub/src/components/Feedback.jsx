@@ -1,0 +1,5 @@
+import React from "react";
+import PageHeading from "./PageHeading";
+export default function Feedback({ rating, setRating, feedback, setFeedback, onSubmit }) {
+  return <section className="page-content narrow"><PageHeading title="Share Your Feedback" subtitle="Tell us about your service experience."/><form className="panel feedback-panel" onSubmit={onSubmit}><label>Service<select><option>General Service</option></select></label><div className="rating-label">Rate the service</div><div className="stars">{[1,2,3,4,5].map(n=><button type="button" key={n} className={n<=rating?"star selected":"star"} onClick={()=>setRating(n)}>★</button>)}</div><label>Your feedback<textarea value={feedback} onChange={e=>setFeedback(e.target.value)} placeholder="Write your comments here..." required/></label><button className="primary-btn full">Submit Feedback</button></form></section>;
+}

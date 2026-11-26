@@ -1,0 +1,6 @@
+import React from "react";
+import PageHeading from "./PageHeading";
+import EmptyState from "./EmptyState";
+export default function ServiceHistory({ latestAppointment }) {
+  return <section className="page-content"><PageHeading title="Service Status & History" subtitle="Track the progress of your vehicle service."/><div className="panel history-panel">{latestAppointment?<><div className="history-head"><div><span className="eyebrow">LATEST BOOKING</span><h3>{latestAppointment.service}</h3><p>{latestAppointment.vehicle} · {latestAppointment.number}</p></div><span className="status upcoming">{latestAppointment.status}</span></div><div className="timeline"><div className="timeline-item done"><span>✓</span><b>Booked</b><small>{latestAppointment.date}</small></div><div className="timeline-item current"><span>2</span><b>In Service</b><small>Awaiting workshop update</small></div><div className="timeline-item"><span>3</span><b>Completed</b><small>Not completed yet</small></div></div></>:<EmptyState text="Your service history will appear here."/>}</div></section>;
+}

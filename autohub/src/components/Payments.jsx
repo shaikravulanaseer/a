@@ -1,0 +1,5 @@
+import React from "react";
+import PageHeading from "./PageHeading";
+export default function Payments({ amount, billPaid, onPay }) {
+  return <section className="page-content narrow"><PageHeading title="Make Payment" subtitle="Review your service bill and choose a payment method."/><div className="panel payment-panel"><span className="eyebrow">AMOUNT PAYABLE</span><div className="amount">₹{amount.toLocaleString("en-IN")}</div><label className="radio-line"><input type="radio" name="pay" defaultChecked/> UPI (PhonePe / GPay / Paytm)</label><label className="radio-line"><input type="radio" name="pay"/> Debit / Credit Card</label><label className="radio-line"><input type="radio" name="pay"/> Net Banking</label><button className="primary-btn full" onClick={onPay}>{billPaid?"Payment Completed ✓":"Pay Now"}</button><p className="muted tiny">Demo interface only. No real payment is processed.</p></div></section>;
+}

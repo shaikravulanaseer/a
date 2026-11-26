@@ -1,0 +1,6 @@
+import React from "react";
+import PageHeading from "./PageHeading";
+import EmptyState from "./EmptyState";
+export default function Appointments({ appointments, cancelAppointment, rescheduleAppointment }) {
+  return <section className="page-content"><PageHeading title="My Appointments" subtitle="View, reschedule or cancel your bookings."/><div className="panel table-panel"><div className="table-wrap"><table><thead><tr><th>Service</th><th>Vehicle</th><th>Date & time</th><th>Status</th><th>Actions</th></tr></thead><tbody>{appointments.map(a=><tr key={a.id}><td><b>{a.service}</b><small>Booking #{String(a.id).slice(-6)}</small></td><td>{a.vehicle}<small>{a.number}</small></td><td>{a.date}<small>{a.time}</small></td><td><span className={`status ${a.status.toLowerCase()}`}>{a.status}</span></td><td className="actions-cell"><button className="outline-btn compact" disabled={a.status==="Cancelled"} onClick={()=>rescheduleAppointment(a.id)}>Reschedule</button><button className="danger-btn compact" disabled={a.status==="Cancelled"} onClick={()=>cancelAppointment(a.id)}>Cancel</button></td></tr>)}</tbody></table>{appointments.length===0&&<EmptyState text="No appointments yet. Book your first service."/>}</div></div></section>;
+}
